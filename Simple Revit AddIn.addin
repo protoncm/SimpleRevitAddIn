@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <!--<AddIn Type="Command">
+    <Text>Command Simple Revit AddIn</Text>
+    <Description>Some description for Simple Revit AddIn</Description>
+    <Assembly>Simple Revit AddIn.dll</Assembly>
+    <FullClassName>Simple_Revit_AddIn.Command</FullClassName>
+    <ClientId>5317c86a-801b-4687-bc99-dd5020bb3135</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>-->
+  <AddIn Type="Application">
+    <Name>Application Simple</Name>
+    <Assembly>Simple Revit AddIn.dll</Assembly>
+    <FullClassName>Simple_Revit_AddIn.App</FullClassName>
+    <ClientId>2730374e-028e-4e04-a1c6-597a39c189df</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
