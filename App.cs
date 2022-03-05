@@ -26,6 +26,8 @@ namespace Simple_Revit_AddIn
             a.CreateRibbonTab(tabName);
             RibbonPanel pannel = a.CreateRibbonPanel(tabName, tabPanelName);
             PushButtonData button = new PushButtonData(buttonName, buttonName, assemblyPath, buttonClassName);
+
+            // add image to button
             button.LargeImage = new BitmapImage(new Uri(@"/Resources/Dynamo.png", UriKind.Relative));
             pannel.AddItem(button);
 
