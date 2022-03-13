@@ -7,7 +7,7 @@ using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-
+using Simple_Revit_AddIn.Components;
 #endregion
 
 namespace Simple_Revit_AddIn
@@ -15,6 +15,7 @@ namespace Simple_Revit_AddIn
     [Transaction(TransactionMode.Manual)]
     public class Command : IExternalCommand
     {
+        private PopupWindow popupWindow = new PopupWindow();
         public Result Execute(
           ExternalCommandData commandData,
           ref string message,
@@ -30,9 +31,7 @@ namespace Simple_Revit_AddIn
             using (Transaction tx = new Transaction(doc))
             {
                 tx.Start("Simple");
-                string dialogTitle = "Simple Add-In";
-                string description = "Hey! This is very simple add-in";
-                TaskDialog.Show(dialogTitle, description);
+                popupWindow.ShowDialog();
                 tx.Commit();
             }
 

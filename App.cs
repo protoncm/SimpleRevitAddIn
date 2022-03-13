@@ -5,6 +5,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Windows.Media.Imaging;
 
@@ -16,20 +17,8 @@ namespace Simple_Revit_AddIn
     {
         public Result OnStartup(UIControlledApplication a)
         {
-            // declare variables
-            string tabName = "Simple Add In";
-            string tabPanelName = "Simple";
-            string buttonName = "Simple";
-            string buttonClassName = "Simple_Revit_AddIn.Command";
-            string assemblyPath = Assembly.GetExecutingAssembly().Location;
-            // create a new tab for button
-            a.CreateRibbonTab(tabName);
-            RibbonPanel pannel = a.CreateRibbonPanel(tabName, tabPanelName);
-            PushButtonData button = new PushButtonData(buttonName, buttonName, assemblyPath, buttonClassName);
-
-            // add image to button
-            button.LargeImage = new BitmapImage(new Uri(@"/Resources/Dynamo.png", UriKind.Relative));
-            pannel.AddItem(button);
+            // Create add in button
+            CreateAddInButton(a);
 
             return Result.Succeeded;
         }
@@ -38,5 +27,26 @@ namespace Simple_Revit_AddIn
         {
             return Result.Succeeded;
         }
+
+        #region Private Methods
+        private void CreateAddInButton(UIControlledApplication a)
+        {
+            // declare variables
+            string tabName = "Simple Add In";
+            string tabPanelName = "User";
+            string buttonName = "Dynamo";
+            string buttonClassName = "Simple_Revit_AddIn.Command";
+            string assemblyPath = Assembly.GetExecutingAssembly().Location;
+            // create a new tab for button
+            a.CreateRibbonTab(tabName);
+            RibbonPanel pannel = a.CreateRibbonPanel(tabName, tabPanelName);
+            PushButtonData button = new PushButtonData(buttonName, buttonName, assemblyPath, buttonClassName);
+
+            // add image to button
+            string imageUrl = Path.Combine(Environment.CurrentDirectory, "Resources", "Dynamo.PNG");
+            button.LargeImage = new BitmapImage(new Uri(imageUrl));
+            pannel.AddItem(button);
+        }
+        #endregion
     }
 }
